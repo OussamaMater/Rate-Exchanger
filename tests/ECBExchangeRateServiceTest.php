@@ -51,7 +51,7 @@ it('throws an exception if the api times out', function () {
         $apiUrl => Http::response('', 408),
     ]);
 
-    $service = new CacheRatesService(new ECBExchangeRateService());
-    $service->cacheRates();
+    $service = new ECBExchangeRateService();
+    $service->getRates();
 
 })->throws(RateExchangeApiTimeoutException::class);

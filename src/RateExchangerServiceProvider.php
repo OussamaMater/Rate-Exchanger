@@ -19,17 +19,19 @@ class RateExchangerServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('rate-exchanger')
+            ->hasViews()
+            ->hasAssets()
             ->hasConfigFile()
             ->hasCommand(RateExchangerCommand::class);
     }
 
-    public function bootingPackage()
+    public function bootingPackage(): void
     {
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('ratesCached', EnsureRatesAreCached::class);
     }
 
-    public function registeringPackage()
+    public function registeringPackage(): void
     {
         $this->app->bind(ExchangeRateService::class, ECBExchangeRateService::class);
         $this->app->singleton(CacheRatesService::class, function (Application $app) {
@@ -37,18 +39,19 @@ class RateExchangerServiceProvider extends PackageServiceProvider
         });
     }
 
-    public function packageRegistered()
+    public function packageRegistered(): void
     {
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });
     }
 
-    protected function routeConfiguration()
+    protected function routeConfiguration(): array
     {
         return [
             'prefix' => config('rate-exchanger.prefix'),
             'middleware' => config('rate-exchanger.middleware'),
+            'as' => config('rate-exchanger.as'),
         ];
     }
 }

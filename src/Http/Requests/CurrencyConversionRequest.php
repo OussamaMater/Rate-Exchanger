@@ -2,11 +2,13 @@
 
 namespace Oussamamater\RateExchanger\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CurrencyConversionRequest extends FormRequest
 {
-    public function rules()
+    public function rules(): array
     {
         return [
             'amount' => ['required', 'numeric'],
@@ -22,5 +24,13 @@ class CurrencyConversionRequest extends FormRequest
         $validated['from'] = config('rate-exchanger.from');
 
         return $validated;
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }

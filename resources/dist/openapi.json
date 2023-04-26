@@ -1,0 +1,46 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Currency Exchanger API - Swagger Documentation",
+        "description": "This API retrieves currency exchange rates through the European Central Bank API.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/rate-exchanger/convert": {
+            "get": {
+                "tags": [
+                    "Currency Exchanger"
+                ],
+                "summary": "Converts a currency",
+                "operationId": "5dc6bceec7ef17d07819a278442382c0",
+                "parameters": [
+                    {
+                        "parameter": "to",
+                        "name": "to",
+                        "in": "query",
+                        "description": "The currency code to convert to",
+                        "required": true
+                    },
+                    {
+                        "parameter": "amount",
+                        "name": "amount",
+                        "in": "query",
+                        "description": "The amount to convert",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Invalid Currency Code"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        }
+    }
+}

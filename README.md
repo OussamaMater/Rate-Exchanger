@@ -1,4 +1,4 @@
-# Rate Exchanges for Laravel
+# Rate Exchanger for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/oussamamater/rate-exchanger.svg?style=flat-square)](https://packagist.org/packages/oussamamater/rate-exchanger)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/oussamamater/rate-exchanger/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/oussamamater/rate-exchanger/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -21,7 +21,14 @@ You can publish the config file with:
 php artisan vendor:publish --tag="rate-exchanger-config"
 ```
 
+You can publish the assets with:
+
+```bash
+php artisan vendor:publish --tag="rate-exchanger-assets"
+```
+
 ## Usage
+The documentation will be available at [/rate-exchanger/usage](/rate-exchanger/usage).
 
 ## Testing
 

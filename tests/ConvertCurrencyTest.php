@@ -14,7 +14,7 @@ it('converts currency', function () {
         'USD' => 1.2,
     ]);
 
-    $response = $this->get(route('convertCurrency', [
+    $response = $this->get(route('rate-exchanger.convertCurrency', [
         'amount' => 100,
         'to' => 'usd',
     ]));
@@ -44,7 +44,7 @@ it('returns an error if currency is invalid', function () {
         'USD' => 1.2,
     ]);
 
-    $response = $this->get(route('convertCurrency', [
+    $response = $this->get(route('rate-exchanger.convertCurrency', [
         'amount' => 100,
         'to' => 'TND',
     ]));

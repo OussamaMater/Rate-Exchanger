@@ -12,6 +12,11 @@ return [
     'prefix' => 'rate-exchanger',
 
     /**
+     * The default name prefix to be applied to routes.
+     */
+    'as' => 'rate-exchanger',
+
+    /**
      * The default middleware group(s) to apply to the package's routes.
      */
     'middleware' => ['web', 'ratesCached'],
